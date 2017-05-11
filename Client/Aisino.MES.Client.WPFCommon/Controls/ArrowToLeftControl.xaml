@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Aisino.MES.Client.WPFCommon.Controls.ArrowToLeftControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="15" d:DesignWidth="15">
+    <Grid>
+        <Canvas  Width="13" Height="10" Margin="-4" Clip="F1 M 0,0L 76,0L 76,76L 0,76L 0,0">
+            <Path Width="13" Height="10" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Fill="{DynamicResource BlackBrush}" Data="F1 M 57,42L 57,34L 32.25,34L 42.25,24L 31.75,24L 17.75,38L 31.75,52L 42.25,52L 32.25,42L 57,42 Z "/>
+        </Canvas>
+    </Grid>
+</UserControl>

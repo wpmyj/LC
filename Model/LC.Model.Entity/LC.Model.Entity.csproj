@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{19EEF244-92F9-4706-B960-D6AE747B8D75}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LC.Model.Entity</RootNamespace>
+    <AssemblyName>LC.Model.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\center.cs" />
+    <Compile Include="Models\center_classrooms.cs" />
+    <Compile Include="Models\classes.cs" />
+    <Compile Include="Models\class_record.cs" />
+    <Compile Include="Models\class_record_detail.cs" />
+    <Compile Include="Models\class_schedule.cs" />
+    <Compile Include="Models\class_topics.cs" />
+    <Compile Include="Models\class_types.cs" />
+    <Compile Include="Models\consultant.cs" />
+    <Compile Include="Models\consultant_check_record.cs" />
+    <Compile Include="Models\lessons_new_vocabulary.cs" />
+    <Compile Include="Models\lesson_cultivateContext.cs" />
+    <Compile Include="Models\lesson_schemas.cs" />
+    <Compile Include="Models\Mapping\centerMap.cs" />
+    <Compile Include="Models\Mapping\center_classroomsMap.cs" />
+    <Compile Include="Models\Mapping\classMap.cs" />
+    <Compile Include="Models\Mapping\class_recordMap.cs" />
+    <Compile Include="Models\Mapping\class_record_detailMap.cs" />
+    <Compile Include="Models\Mapping\class_scheduleMap.cs" />
+    <Compile Include="Models\Mapping\class_topicsMap.cs" />
+    <Compile Include="Models\Mapping\class_typesMap.cs" />
+    <Compile Include="Models\Mapping\consultantMap.cs" />
+    <Compile Include="Models\Mapping\consultant_check_recordMap.cs" />
+    <Compile Include="Models\Mapping\lessons_new_vocabularyMap.cs" />
+    <Compile Include="Models\Mapping\lesson_schemasMap.cs" />
+    <Compile Include="Models\Mapping\statusMap.cs" />
+    <Compile Include="Models\Mapping\studentMap.cs" />
+    <Compile Include="Models\Mapping\students_logMap.cs" />
+    <Compile Include="Models\Mapping\student_recharge_detailMap.cs" />
+    <Compile Include="Models\Mapping\SysFunctionMap.cs" />
+    <Compile Include="Models\Mapping\SysMenuMap.cs" />
+    <Compile Include="Models\Mapping\SysModuleMap.cs" />
+    <Compile Include="Models\Mapping\SysRightMap.cs" />
+    <Compile Include="Models\Mapping\SysRoleMap.cs" />
+    <Compile Include="Models\Mapping\SysSubSystemMap.cs" />
+    <Compile Include="Models\Mapping\SysUserMap.cs" />
+    <Compile Include="Models\Mapping\teacherMap.cs" />
+    <Compile Include="Models\Mapping\teachers_check_recordMap.cs" />
+    <Compile Include="Models\status.cs" />
+    <Compile Include="Models\student.cs" />
+    <Compile Include="Models\students_log.cs" />
+    <Compile Include="Models\student_recharge_detail.cs" />
+    <Compile Include="Models\SysFunction.cs" />
+    <Compile Include="Models\SysMenu.cs" />
+    <Compile Include="Models\SysModule.cs" />
+    <Compile Include="Models\SysRight.cs" />
+    <Compile Include="Models\SysRole.cs" />
+    <Compile Include="Models\SysSubSystem.cs" />
+    <Compile Include="Models\SysUser.cs" />
+    <Compile Include="Models\teacher.cs" />
+    <Compile Include="Models\teachers_check_record.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LC.Model.Common\LC.Model.Common.csproj">
+      <Project>{a8964e09-3953-48ee-b3b4-1c9bbafe23c5}</Project>
+      <Name>LC.Model.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

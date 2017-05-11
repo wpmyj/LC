@@ -1,0 +1,96 @@
+﻿<src:BaseWindow x:Class="LC.ClassesManager.Windows.CheckStudentWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{DynamicResource WindowStyle}" 
+        xmlns:src="clr-namespace:Aisino.MES.Client.WPFCommon.Windows;assembly=Aisino.MES.Client.WPFCommon"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        Title="CheckStudentWindow" Height="570" Width="500" Loaded="BaseWindow_Loaded" WindowStartupLocation="CenterScreen"
+        BorderThickness="1" BorderBrush="#FFD4D2D2">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--<DataTemplate x:Key="StudentTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}" Margin="5,0" />
+                    <TextBlock Text="{Binding Nickname}" Margin="5,0" />
+                    <TextBlock Text="{Binding RemainingBalance}" />
+                </StackPanel>
+            </DataTemplate>-->
+
+            <HierarchicalDataTemplate x:Key="StudentTemplate"
+				ItemsSource="{Binding studentDisplayModels}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}" Margin="5,0" />
+                    <TextBlock Text="{Binding Nickname}" Margin="5,0" />
+                    <TextBlock Text="{Binding RemainingBalance}" />
+                </StackPanel>
+            </HierarchicalDataTemplate>
+
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Validation.ErrorTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <DockPanel LastChildFill="True">
+                                <TextBlock DockPanel.Dock="Right" 
+                                       Foreground="Red" 
+                                       Margin="5,0,5,0"
+                                       Text="*"/>
+                                <Border BorderBrush="Red" BorderThickness="1">
+                                    <AdornedElementPlaceholder Name="ph"/>
+                                </Border>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="true">
+                        <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Viewbox Name="viewBox">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="420"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Name="lbClassName"  Grid.Row="0" Grid.Column="0" FontWeight="Bold" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0"
+                Style="{DynamicResource WindowLabelStyle}"></Label>
+            <Label Name="lbClassTime" Grid.Row="1" Grid.Column="0" FontWeight="Bold" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0"
+                Style="{DynamicResource WindowLabelStyle}"></Label>
+            <Label Name="lbTeacherName" Grid.Row="2" Grid.Column="0" FontWeight="Bold" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0"
+                Style="{DynamicResource WindowLabelStyle}"></Label>
+
+            <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="8" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="btnOK" Content="确认" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Click="btnOK_Click"></Button>
+                <Button Name="btnCancel" Content="取消" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0"
+                 Click="btnCancel_Click"></Button>
+                <Button Name="btnUnCheck" Content="撤销" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0"
+                 Click="btnUnCheck_Click"></Button>
+            </StackPanel>
+            <telerik:RadTreeView x:Name="StudentTree" Padding="0" BorderThickness="1" Grid.Row="3"
+						IsEditable="True" SelectionMode="Multiple" IsOptionElementsEnabled="True" IsTriStateMode="True"
+						IsSingleExpandPath="False" IsExpandOnSingleClickEnabled="True" 
+                        Checked="StudentTree_Checked" Unchecked="StudentTree_Unchecked" telerik:TextSearch.TextPath="Name"
+						ItemTemplate="{StaticResource StudentTemplate}" Margin="0" Grid.ColumnSpan="4" />
+
+        </Grid>
+    </Viewbox>
+</src:BaseWindow>

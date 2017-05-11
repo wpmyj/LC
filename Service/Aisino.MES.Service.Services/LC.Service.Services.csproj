@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0A474A95-EBB8-4B60-A206-22244F39C13C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LC.Service.Services</RootNamespace>
+    <AssemblyName>LC.Service.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=6847f3395fc61b47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=6847f3395fc61b47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\branches\山东演示\Aisino.MES\Lib\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\..\Client\package\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseManager\CenterService.cs" />
+    <Compile Include="BaseManager\ClassroomService.cs" />
+    <Compile Include="BaseManager\ConsultantService.cs" />
+    <Compile Include="BaseManager\StatusService.cs" />
+    <Compile Include="ClassManager\ClassesService.cs" />
+    <Compile Include="ClassManager\ClassTypeService.cs" />
+    <Compile Include="ClassManager\ScheduleService.cs" />
+    <Compile Include="LCServiceException.cs" />
+    <Compile Include="Common\CommonService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentManager\StudentService.cs" />
+    <Compile Include="SysManager\FunctionModelService.cs" />
+    <Compile Include="SysManager\MenuModelService.cs" />
+    <Compile Include="SysManager\ModuleModelService.cs" />
+    <Compile Include="SysManager\RightModelService.cs" />
+    <Compile Include="SysManager\RoleModelService.cs" />
+    <Compile Include="SysManager\SubSystemModelService.cs" />
+    <Compile Include="SysManager\UserModelService.cs" />
+    <Compile Include="TeacherManager\TeacherService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Aisino.MES.DAL\Aisino.MES.DAL.csproj">
+      <Project>{75e75ed6-d74f-4b9c-90ef-80bcee226c1a}</Project>
+      <Name>Aisino.MES.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Model\LC.Model.Business\LC.Model.Business.csproj">
+      <Project>{313602bb-f5ac-4c68-8d7f-4d40f553d58f}</Project>
+      <Name>LC.Model.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Model\LC.Model.Common\LC.Model.Common.csproj">
+      <Project>{a8964e09-3953-48ee-b3b4-1c9bbafe23c5}</Project>
+      <Name>LC.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Model\LC.Model.Entity\LC.Model.Entity.csproj">
+      <Project>{19eef244-92f9-4706-b960-d6ae747b8d75}</Project>
+      <Name>LC.Model.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.MES.Service.Contracts\LC.Service.Contracts.csproj">
+      <Project>{0dae6c2e-d216-4015-ac4b-8a0c8b563b9e}</Project>
+      <Name>LC.Service.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

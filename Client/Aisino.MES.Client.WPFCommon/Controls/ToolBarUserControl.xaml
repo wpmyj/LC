@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Aisino.MES.Client.WPFCommon.Controls.ToolBarUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Aisino.MES.Client.WPFCommon.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/Common/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="bt" BasedOn="{StaticResource MetroCircleButtonStyle}" TargetType="{x:Type Button}">
+                <Style.Setters>
+                    <Setter Property="Margin" Value="0 0 10 0"></Setter>
+                    <Setter Property="Width" Value="60"></Setter>
+                </Style.Setters>
+        </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <ToolBar Background="Transparent">
+            <Button Name="btnAdd" Click="AddButtonClick" ToolTip="新增单据">
+                <local:AddControl></local:AddControl>
+            </Button>
+            <Button Name="btnSave" Click="SaveButtonClick" ToolTip="保存单据">
+                <local:Save></local:Save>
+            </Button>
+            <Button Name="btnCheckmark" Click="CheckmarkButtonClick" ToolTip="主单确认">
+                <local:CheckmarkPencil></local:CheckmarkPencil>
+            </Button>
+            <Button Name="btnConfirm" Click="ConfirmButtonClick" ToolTip="确认单据">
+                <local:Confirm></local:Confirm>
+            </Button>            
+            <Button Name="btnSubmit" Click="SubmitButtonClick" ToolTip="提交单据">
+                <local:Submit></local:Submit>
+            </Button>
+            <Button Name="btnReset" Click="ResetButtonClick" ToolTip="确认回滚单据">
+                <local:Reset></local:Reset>
+            </Button>
+            <Button Name="btnAbolish" Click="AbolishButtonClick" ToolTip="废除单据">
+                <local:Abolish></local:Abolish>
+            </Button>
+            <!--<Button Name="btnSearch" ToolTip="查询" Click="SearchButtonClick">
+                <local:SearchControl></local:SearchControl>
+            </Button>-->
+        </ToolBar>
+    </Grid>
+</UserControl>

@@ -1,0 +1,91 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" 
+      xmlns:Controls1="clr-namespace:Aisino.MES.Client.WPFCommon.Controls;assembly=Aisino.MES.Client.WPFCommon" x:Class="Aisino.MES.Client.MainForms.Pages.LoginPage" 
+      mc:Ignorable="d"
+	Title="LoginPage" Height="486.269" Width="920.761" Loaded="Page_Loaded" KeyDown="Page_KeyDown">
+
+    <Grid Background="White" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1"
+			Margin="10,0,176,0"
+			Content="Sign In"
+			Style="{DynamicResource DescriptionHeaderStyle}"
+			FontSize="30" Width="114" Foreground="#FF17559E" Grid.Column="1"/>
+        <DockPanel Grid.Row="2" Grid.Column="1">
+            <Label  Content="" DockPanel.Dock="Left"
+				Style="{DynamicResource DescriptionHeaderStyle}" Height="30" Width="30" FontSize="20">
+                <Label.Background>
+                    <ImageBrush ImageSource="/Images/contacts_32px.png" />
+                </Label.Background>
+            </Label>
+            <ComboBox x:Name="cmb_loginName" HorizontalAlignment="Stretch"
+				Height="30"
+                Width="250"
+                DockPanel.Dock="Right"
+				Controls:TextBoxHelper.ClearTextButton="True"
+				Grid.Column="1"
+				FontSize="18"
+				Background="White"
+				IsEditable="True"
+				SelectedIndex="0"
+				VerticalContentAlignment="Center"
+				Controls:TextBoxHelper.Watermark="请输入用户名……"/>
+        </DockPanel>
+        <DockPanel Grid.Row="3" Grid.Column="1">
+            <Label Grid.Column="1" Content=""
+				Style="{DynamicResource DescriptionHeaderStyle}" Height="30" Width="30" FontSize="20">
+                <Label.Background>
+                    <ImageBrush ImageSource="/Images/key_stroke.png" />
+                </Label.Background>
+            </Label>
+            <PasswordBox x:Name="pwdPassword"
+				Grid.Column="2" Height="30"
+                Width="250"
+                DockPanel.Dock="Right"
+                Controls:TextBoxHelper.ClearTextButton="True"
+				Controls:PasswordBoxHelper.CapsLockIcon="！"
+				Controls:TextBoxHelper.Watermark=""
+				Controls:TextBoxHelper.UseFloatingWatermark="True"
+				Controls:TextBoxHelper.IsWaitingForData="True" 
+				Controls:TextBoxHelper.SelectAllOnFocus="True"
+				ToolTip="密码"
+				FontSize="18"/>
+        </DockPanel>
+        <Button x:Name="btnLogin" 
+			Click="btnLogin_Click"
+			Grid.Row="2" Grid.Column="2" Grid.RowSpan="2"
+			Width="60"
+			Height="60"
+			Margin="10,25,10,15"
+			Style="{DynamicResource MetroCircleButtonStyle}" BorderBrush="#FF17559E" Cursor="Hand">
+            <Image Source="/Images/arrow_right.png" Width="30"/>
+        </Button>
+        <CheckBox x:Name="chb_remberPassword" Grid.Row="4" Grid.Column="1"
+			Margin="177,0,0,0"
+			Content="Remember"
+			FontFamily="Microsoft YaHei" FontWeight="Light" FontSize="18" Foreground="#FF17559E"/>
+        <Controls:ProgressRing x:Name="loginProgress" Grid.Column="1" Foreground="#FF17559E"
+			IsActive="False"
+			Width="60"
+			Height="60" Margin="117,0,123,112" Grid.Row="5" />
+        <Label x:Name="lblProgress" Grid.Column="1" Grid.Row="5" Height="40" Width="auto" VerticalContentAlignment="Center" FontSize="16" Foreground="#FF17559E" HorizontalContentAlignment="Center"/>
+        <Controls:MetroTabControl HorizontalAlignment="Left" Margin="0,139.567,0,-113" Grid.Row="5" VerticalAlignment="Top" Width="306" Grid.ColumnSpan="2"/>
+    </Grid>
+</Page>

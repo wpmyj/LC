@@ -1,0 +1,361 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <!--文件中全部为样式中使用的颜色 配置等皮肤设置. 禁止加入链接-->
+    <!--所有皮肤资源务必保证使用相同的Key名称,而值可有不同-->
+    <!--Designed by ye.wang - 2013.11.24 -->
+
+    <Color x:Key="Control.Normal.BackgroundColor0">#FF595959</Color>
+    <Color x:Key="Control.Normal.BackgroundColor1">#FF5E5E5E</Color>
+    <Color x:Key="Control.Normal.DarkBackgroundColor0">#FF474747</Color>
+    <Color x:Key="Control.Normal.DarkBackgroundColor1">#FF434343</Color>
+    <Color x:Key="Control.Normal.ForegroundColor">#FFEDEDED</Color>
+    <Color x:Key="Control.Normal.BorderColor">#9E2B2B2B</Color>
+
+    <Color x:Key="Control.Highlight.ForegroundColor">White</Color>
+    <Color x:Key="Control.Normal.Dark.ForegroundColor">#FF333333</Color>
+
+    <Color x:Key="Control.MouseOver.BackgroundColor">#5AFFFFFF</Color>
+    <Color x:Key="Control.MouseOver.BorderColor">#FF2B2B2B</Color>
+
+    <Color x:Key="Control.Pressed.BackgroundColor">#FF292929</Color>
+    <Color x:Key="Control.Pressed.BorderColor">#FF292929</Color>
+
+    <Color x:Key="Control.Disabled.BackgroundColor">#FFABABAB</Color>
+    <Color x:Key="Control.Disabled.BorderColor">#9E494949</Color>
+    <Color x:Key="Control.Disabled.ForegroundColor">#FFBEBEBE</Color>
+    <!--#FFCACACA-->
+
+    <System:Double x:Key="Control.Static.MinHeight">30</System:Double>
+
+    <Color x:Key="ItemsControl.Normal.Header.BackgroundColor0">#FF333333</Color>
+    <Color x:Key="ItemsControl.Normal.Header.BackgroundColor1">#FF333333</Color>
+    <System:Double x:Key="ItemsControl.Static.Item.Height">30</System:Double>
+    <System:Double x:Key="ItemsControl.Static.Header.MinHeight">35</System:Double>
+
+    <!--Window-->
+    <LinearGradientBrush x:Key="Window.Static.Background"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#FF3A3A3A"
+                      Offset="0" />
+        <GradientStop Color="#FF3A3A3A"
+                      Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="Window.Static.Header.Background"
+                     Color="#00ffffff" />
+    <SolidColorBrush x:Key="Window.Static.Border"
+                     Color="#FF04640D" />
+    <SolidColorBrush x:Key="Window.Static.Foreground"
+                     Color="{DynamicResource Control.Normal.ForegroundColor}" />
+    <Color x:Key="Window.Static.DropDepthColor">#FF027E00</Color>
+    <LinearGradientBrush x:Key="Window.Static.WorkArea.Background"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#FF565656"
+                      Offset="1" />
+        <GradientStop Color="#FF4E4E4E" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="Window.Static.ResizeGrip.Background"
+                     Color="Red" />
+
+    <SolidColorBrush x:Key="Window.Static.HeaderLine.Brush"
+                     Color="DarkOliveGreen" />
+    <System:Double x:Key="Window.Static.HeaderLine.Height">2</System:Double>
+    <FontFamily x:Key="Window.Static.FontFamily">微软雅黑</FontFamily>
+    <System:Double x:Key="Window.Static.FontSize">14</System:Double>
+    <Thickness x:Key="Window.Static.BorderThickness">0</Thickness>
+
+    <!--Window ScrollItemsContainer-->
+    <SolidColorBrush x:Key="Window.Static.ScrollItemsContainer.Foreground">Gray</SolidColorBrush>
+    <!--Window.BusyIndicator-->
+    <Thickness x:Key="Window.Static.Busy.Thickness">2</Thickness>
+    <Color x:Key="Window.Static.Busy.Border.LightColor">#361C97EA</Color>
+    <Color x:Key="Window.Static.Busy.Border.DarkColor">#FF1C97EA</Color>
+
+    <LinearGradientBrush  x:Key="Window.Static.Busy.Border"
+                          EndPoint="1,0.5"
+                          MappingMode="RelativeToBoundingBox"
+                          StartPoint="0.05,0.5">
+        <GradientStop Offset="1" />
+        <GradientStop Color="Transparent" />
+        <GradientStop Color="{DynamicResource Window.Static.Busy.Border.DarkColor}"
+                      Offset="0.25" />
+        <GradientStop Color="{DynamicResource Window.Static.Busy.Border.DarkColor}"
+                      Offset="0.75" />
+        <GradientStop Color="{DynamicResource Window.Static.Busy.Border.LightColor}"
+                      Offset="0.8" />
+        <GradientStop Offset="0.2"
+                      Color="{DynamicResource Window.Static.Busy.Border.LightColor}" />
+    </LinearGradientBrush>
+
+    <!--WindowMinButton-->
+    <Geometry x:Key="MinButton.Geometry">M4.40625,32.1794776916504L38.6953125,32.1794776916504 38.6953125,37.8044776916504 4.40625,37.8044776916504 4.40625,32.1794776916504z</Geometry>
+
+    <!--WindowMaxButton-->
+    <Geometry x:Key="MaxButton.Geometry">M11.53125,47.8120803833008L11.53125,100.921455383301 64.59375,100.921455383301 64.59375,47.8120803833008 11.53125,47.8120803833008z M17.578125,36.3745803833008L76.125,36.3745803833008 76.125,94.8745803833008 67.3125,94.8745803833008 67.3125,103.593330383301 8.8125,103.593330383301 8.8125,45.1402053833008 17.578125,45.1402053833008 17.578125,36.3745803833008z</Geometry>
+
+    <!--Plugin Button-->
+    <Geometry x:Key="PluginButton.Geometry">M42.508959,0L52.681604,16.961701 52.670599,16.976649C51.959368,17.909657 50.196024,19.460026 46.647989,18.689835 46.647989,18.689835 42.064501,16.913884 40.236368,21.528258 40.236368,21.528258 37.797522,28.194775 45.862875,32.616555 45.862875,32.616555 49.605146,34.047516 51.680784,30.908301 51.680784,30.908301 52.558302,27.775586 52.99711,27.446095 52.99711,27.446095 54.316702,24.227307 56.697382,24.029858L56.915758,24.021655 67.465998,41.612954 50.19293,51.914875 50.034319,51.809102C49.305765,51.290921 47.92898,49.884789 48.571611,46.926693 48.571611,46.926693 49.990976,43.264981 46.304606,41.803894 46.304606,41.803894 45.555491,41.530335 44.432863,41.528016 42.561823,41.524147 39.653257,42.273724 37.446093,46.298958 37.446093,46.298958 36.300238,49.291432 38.809454,50.946431 38.809454,50.946431 41.310972,51.649571 41.575384,51.998692 41.575384,51.998692 44.515486,53.204705 44.300291,55.361336L44.289427,55.435814 25.691336,66.528C25.698124,63.708703,22.20468,57.143475,17.835224,50.038231L17.04109,48.759633 16.841463,48.838231C14.938981,49.671212 13.897164,52.207966 13.897164,52.207966 13.43356,52.559559 12.501254,55.878392 12.501254,55.878392 10.300737,59.207825 6.3346081,57.689557 6.3346086,57.689557 -2.2149557,53.000851 0.36569357,45.931893 0.36569381,45.931893 2.304548,41.040089 7.1652442,42.922852 7.1652446,42.922852 9.7824488,43.491841 11.484304,42.86913 12.531858,42.104168L12.686395,41.985623 12.106977,41.107323C6.3021351,32.358971,0.83699995,24.854022,0.83699969,24.854022L12.053995,18.163973 11.965756,18.008686C10.973011,16.385687 8.8265124,15.503901 8.8265124,15.5039 8.4762006,15.042901 5.1571713,14.109302 5.1571718,14.109302 1.8262417,11.908802 3.3459519,7.9400134 3.3459519,7.9400138 8.0348864,-0.60679458 15.10282,1.9738347 15.10282,1.9738346 19.99358,3.9140143 18.110619,8.773333 18.110619,8.773333 17.578428,11.22699 18.09281,12.876081 18.789537,13.935753L18.893026,14.085033z</Geometry>
+
+    <!--WindowCloseButton-->
+    <Geometry  x:Key="CloseButton.Geometry">M8.296875,12.9138526916504L23.9765625,28.6872901916504 39.7265625,12.9138526916504 45.140625,18.2810401916504 29.390625,34.0076026916504 45.140625,49.7810401916504 39.7265625,55.1482276916504 23.9765625,39.4685401916504 8.296875,55.1482276916504 2.8359375,49.7810401916504 18.5859375,34.0076026916504 2.8359375,18.2810401916504 8.296875,12.9138526916504z</Geometry>
+
+    <SolidColorBrush x:Key="CloseButton.MouseOver.Background"
+                     Color="#FFEC7272" />
+    <SolidColorBrush x:Key="CloseButton.Pressed.Background"
+                     Color="Red" />
+
+    <!--SubSystemWindow Size-->
+    <System:Double x:Key="SubWindow.Static.Height">768.0</System:Double>
+    <System:Double x:Key="SubWindow.Static.Width">1230.0</System:Double>
+    <!--Menu-->
+    <LinearGradientBrush x:Key="Menu.Normal.Background"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="{DynamicResource ItemsControl.Normal.Header.BackgroundColor0}"
+                      Offset="0" />
+        <GradientStop Color="{DynamicResource ItemsControl.Normal.Header.BackgroundColor0}"
+                      Offset="1" />
+        <GradientStop Color="{DynamicResource ItemsControl.Normal.Header.BackgroundColor1}"
+                      Offset="0.3" />
+        <GradientStop Color="{DynamicResource ItemsControl.Normal.Header.BackgroundColor1}"
+                      Offset="0.6" />
+    </LinearGradientBrush>
+    <FontFamily x:Key="Menu.Static.FontFamily">微软雅黑</FontFamily>
+    <System:Double x:Key="Menu.Static.FontSize">14</System:Double>
+    <System:Double x:Key="Menu.Static.MinHeight">30</System:Double>
+
+    <SolidColorBrush x:Key="MenuItem.Normal.Border"
+                     Color="{DynamicResource Control.Normal.BorderColor}" />
+
+    <LinearGradientBrush x:Key="MenuItem.Normal.Background"
+                         EndPoint="0,1"
+                         StartPoint="0,0">
+        <GradientStop Color="{DynamicResource Control.Normal.BackgroundColor1}"
+                      Offset="0.60" />
+        <GradientStop Color="{DynamicResource Control.Normal.BackgroundColor0}"
+                      Offset="1" />
+        <GradientStop Color="{DynamicResource Control.Normal.BackgroundColor1}"
+                      Offset="0.40" />
+        <GradientStop Color="{DynamicResource Control.Normal.BackgroundColor0}" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="MenuItem.Normal.Foreground"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="{DynamicResource Control.Normal.ForegroundColor}"
+                      Offset="0" />
+        <GradientStop Color="{DynamicResource Control.Normal.ForegroundColor}"
+                      Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="MenuItem.Selection.Fill"
+                         EndPoint="0,1"
+                         StartPoint="0,0">
+        <GradientStop Color="#34CCCCCC"
+                      Offset="0" />
+        <GradientStop Color="#34E7E7E7"
+                      Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="MenuItem.Pressed.Fill"
+                         EndPoint="0,1"
+                         StartPoint="0,0">
+        <GradientStop Color="#28717070"
+                      Offset="0" />
+        <GradientStop Color="#50717070"
+                      Offset="0.75" />
+        <GradientStop Color="#90717070"
+                      Offset="1" />
+    </LinearGradientBrush>
+    <Geometry x:Key="MenuItem.Checkmark">M 0,5.1 L 1.7,5.2 L 3.4,7.1 L 8,0.4 L 9.2,0 L 3.3,10.8 Z</Geometry>
+    <Geometry x:Key="MenuItem.RightArrow">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
+    <Geometry x:Key="MenuItem.UpArrow">M 0,4 L 3.5,0 L 7,4 Z</Geometry>
+    <Geometry x:Key="MenuItem.DownArrow">M 0,0 L 3.5,4 L 7,0 Z</Geometry>
+    <System:Double x:Key="MenuItem.Static.FontSize">18</System:Double>
+
+    <!--Button-->
+    <FontFamily x:Key="Button.Static.FontFamily">微软雅黑</FontFamily>
+    <System:Double x:Key="Button.Static.FontSize">14</System:Double>
+    <Thickness x:Key="Button.Static.BorderThickness">1</Thickness>
+    <!--0.1-->
+
+    <LinearGradientBrush x:Key="Button.Normal.Background"
+                         EndPoint="0,1"
+                         StartPoint="0,0">
+        <GradientStop Color="{DynamicResource Control.Normal.BackgroundColor1}"
+                      Offset="0.60" />
+        <GradientStop Color="{DynamicResource Control.Normal.BackgroundColor0}"
+                      Offset="1" />
+        <GradientStop Color="{DynamicResource Control.Normal.BackgroundColor1}"
+                      Offset="0.40" />
+        <GradientStop Color="{DynamicResource Control.Normal.BackgroundColor0}" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Button.Normal.BackgroundMask"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#3Fe8e8e8" />
+        <GradientStop Color="#00e8e8e8"
+                      Offset="1" />
+
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="Button.Normal.Border"
+                     Color="{DynamicResource Control.Normal.BorderColor}" />
+    <SolidColorBrush x:Key="Button.Normal.Foreground"
+                     Color="{DynamicResource Control.Normal.ForegroundColor}" />
+
+    <!--<SolidColorBrush x:Key="Button.MouseOver.BackgroundMask"
+                     Color="{DynamicResource Control.MouseOver.BackgroundColor}" />-->
+    <LinearGradientBrush x:Key="Button.MouseOver.BackgroundMask"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#2DE8E8E8" />
+        <GradientStop Color="#19E8E8E8"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="Button.MouseOver.Border"
+                     Color="{DynamicResource Control.MouseOver.BorderColor}" />
+    <!--="Transparent" />-->
+    <SolidColorBrush x:Key="Button.MouseOver.Foreground"
+                     Color="#ffffffff" />
+    <Thickness x:Key="Button.MouseOver.BorderThickness">1</Thickness>
+    <!--0.1-->
+    <!--<SolidColorBrush x:Key="Button.Pressed.BackgroundMask"
+                     Color="{DynamicResource Control.Pressed.BackgroundColor}" />-->
+    <LinearGradientBrush x:Key="Button.Pressed.BackgroundMask"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#3Fe8e8e8" />
+        <GradientStop Color="#00e8e8e8"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="Button.Pressed.Border"
+                     Color="{DynamicResource Control.Pressed.BorderColor}" />
+    <Thickness x:Key="Button.Pressed.BorderThickness">1.2</Thickness>
+    <!--0.2-->
+    <SolidColorBrush x:Key="Button.Pressed.Foreground"
+                     Color="{DynamicResource Control.Highlight.ForegroundColor}" />
+
+    <LinearGradientBrush x:Key="Button.Focused.BackgroundMask"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#2DE8E8E8" />
+        <GradientStop Color="#19E8E8E8"
+                      Offset="1" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="Button.Focused.Border"
+                     Color="{DynamicResource Control.MouseOver.BorderColor}" />
+    <Thickness x:Key="Button.Focused.BorderThickness">1</Thickness>
+    <!--0.1-->
+
+    <SolidColorBrush x:Key="Button.Disabled.Background"
+                     Color="{DynamicResource Control.Disabled.BackgroundColor}" />
+    <SolidColorBrush x:Key="Button.Disabled.Border"
+                     Color="{DynamicResource Control.Disabled.BorderColor}" />
+    <SolidColorBrush x:Key="Button.Disabled.Foreground"
+                     Color="{DynamicResource Control.Disabled.ForegroundColor}" />
+
+    <!--Submit Button-->
+    <StreamGeometry x:Key="SubmitButton.Geometry">M96.234375,29.3433303833008L111,40.3589553833008 63.515625,111.233955383301 61.921875,111.233955383301 21.234375,76.0777053833008 32.71875,61.0308303833008 59.53125,84.1402053833008 96.234375,29.3433303833008z</StreamGeometry>
+
+    <!--HyperLinkButton-->
+
+    <SolidColorBrush x:Key="HyperLinkButton.Normal.Foreground"
+                     Color="{DynamicResource Control.Normal.ForegroundColor}" />
+    <SolidColorBrush x:Key="HyperLinkButton.MouseOver.Foreground"
+                     Color="#FF6AAFE8" />
+    <SolidColorBrush x:Key="HyperLinkButton.Pressed.Foreground"
+                     Color="#FF000AE0" />
+    <SolidColorBrush x:Key="HyperLinkButton.Disabled.Foreground"
+                     Color="{DynamicResource Control.Disabled.ForegroundColor}" />
+    <!--TextBlock-->
+    <SolidColorBrush x:Key="TextBlock.Normal.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="TextBlock.Normal.Foreground"
+                     Color="{DynamicResource Control.Normal.ForegroundColor}" />
+
+    <SolidColorBrush x:Key="TextBlock.Dark.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="TextBlock.Dark.Foreground"
+                     Color="{DynamicResource Control.Normal.Dark.ForegroundColor}" />
+
+    <FontFamily x:Key="TextBlock.Static.FontFamily">微软雅黑</FontFamily>
+    <System:Double x:Key="TextBlock.Static.FontSize">14</System:Double>
+
+    <!--Label-->
+    <SolidColorBrush x:Key="Label.Normal.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Label.Normal.Foreground"
+                     Color="{DynamicResource Control.Normal.ForegroundColor}" />
+    <SolidColorBrush x:Key="Label.Normal.Border"
+                     Color="#ffffffff" />
+    <Thickness x:Key="Label.Normal.BorderThickness">0.0</Thickness>
+
+    <SolidColorBrush x:Key="Label.Dark.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Label.Dark.Foreground"
+                     Color="{DynamicResource Control.Normal.Dark.ForegroundColor}" />
+    <SolidColorBrush x:Key="Label.Dark.Border"
+                     Color="#ffffffff" />
+
+    <SolidColorBrush x:Key="Label.Disabled.Background"
+                     Color="{DynamicResource Control.Disabled.BackgroundColor}" />
+    <SolidColorBrush x:Key="Label.Disabled.Border"
+                     Color="{DynamicResource Control.Disabled.BorderColor}" />
+    <SolidColorBrush x:Key="Label.Disabled.Foreground"
+                     Color="{DynamicResource Control.Disabled.ForegroundColor}" />
+
+    <FontFamily x:Key="Label.Static.FontFamily">微软雅黑</FontFamily>
+    <System:Double x:Key="Label.Static.FontSize">14</System:Double>
+    <Thickness x:Key="Label.Static.BorderThickness">1</Thickness>
+
+    <!--ToolTip-->
+    <SolidColorBrush x:Key="ToolTip.Static.Background"
+                     Color="#FF454545" />
+    <SolidColorBrush x:Key="ToolTip.Static.Foreground"
+                     Color="{DynamicResource Control.Normal.ForegroundColor}" />
+    <SolidColorBrush x:Key="ToolTip.Static.Border"
+                     Color="#FF272727" />
+    <FontFamily x:Key="ToolTip.Static.FontFamily">微软雅黑</FontFamily>
+    <System:Double x:Key="ToolTip.Static.FontSize">10</System:Double>
+    <Thickness x:Key="ToolTip.Static.BorderThickness">1</Thickness>
+
+    <!--TextBox-->
+    <SolidColorBrush x:Key="TextBox.Normal.Background"
+                     Color="{DynamicResource Control.Normal.BackgroundColor1}" />
+    <SolidColorBrush x:Key="TextBox.Normal.Foreground"
+                     Color="{DynamicResource Control.Normal.ForegroundColor}" />
+    <SolidColorBrush x:Key="TextBox.Normal.Border"
+                     Color="{DynamicResource Control.Normal.BorderColor}" />
+    <Thickness x:Key="TextBox.Normal.BorderThickness">1</Thickness>
+
+    <SolidColorBrush x:Key="TextBox.MouseOver.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="TextBox.MouseOver.Foreground"
+                     Color="#ffffffff" />
+    <SolidColorBrush x:Key="TextBox.MouseOver.Border"
+                     Color="{DynamicResource Control.MouseOver.BorderColor}" />
+    <Thickness x:Key="TextBox.MouseOver.BorderThickness">1</Thickness>
+
+    <SolidColorBrush x:Key="TextBox.Disabled.Background"
+                     Color="{DynamicResource Control.Disabled.BackgroundColor}" />
+    <SolidColorBrush x:Key="TextBox.Disabled.Border"
+                     Color="{DynamicResource Control.Disabled.BorderColor}" />
+    <SolidColorBrush x:Key="TextBox.Disabled.Foreground"
+                     Color="{DynamicResource Control.Disabled.ForegroundColor}" />
+    <Thickness x:Key="TextBox.Disabled.BorderThickness">1</Thickness>
+
+    <SolidColorBrush x:Key="TextBoxBase.WaterMark.Foreground"
+                     Color="#FFD9E4D4" />
+    <SolidColorBrush x:Key="TextBoxBase.Selection.Brush"
+                     Color="#7E01AB1B" />
+
+    <FontFamily x:Key="TextBox.Static.FontFamily">微软雅黑</FontFamily>
+    <System:Double x:Key="TextBox.Static.FontSize">14</System:Double>
+
+
+</ResourceDictionary>

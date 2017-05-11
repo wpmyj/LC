@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC49E863-E3C1-4A56-A0C1-2233E46A4316}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LC.BaseManager</RootNamespace>
+    <AssemblyName>LC.BaseManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MahApps.Metro, Version=0.14.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MahApps.Metro.1.4.3\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\..\packages\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\..\packages\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\..\packages\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MahApps.Metro.1.4.3\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Reporting, Version=9.0.15.324, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Terlerik\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Reporting.XpsRendering">
+      <HintPath>..\..\packages\Terlerik\Telerik.Reporting.XpsRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.Wpf">
+      <HintPath>..\..\packages\Terlerik\Telerik.ReportViewer.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Controls.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Controls.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Controls.GridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Controls.Navigation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Controls.RibbonView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Documents.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Documents.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>D:\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WcfClientProxyGenerator">
+      <HintPath>..\..\packages\WcfClientProxyGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFLocalizeExtension">
+      <HintPath>..\..\packages\WPFLocalizeExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="XAMLMarkupExtensions">
+      <HintPath>..\..\packages\XAMLMarkupExtensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\CenterAndClassroomManagerPage.xaml.cs">
+      <DependentUpon>CenterAndClassroomManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ConsultantManagerPage.xaml.cs">
+      <DependentUpon>ConsultantManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ConsultantRecordDetailPage.xaml.cs">
+      <DependentUpon>ConsultantRecordDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Reports\ConsultantRecordDetailReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ConsultantRecordDetailReport.Designer.cs">
+      <DependentUpon>ConsultantRecordDetailReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ConsultantRecordDetails.cs" />
+    <Compile Include="Windows\CheckConsultantMoneyWindow.xaml.cs">
+      <DependentUpon>CheckConsultantMoneyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditCenterWindow.xaml.cs">
+      <DependentUpon>EditCenterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditClassroomWindow.xaml.cs">
+      <DependentUpon>EditClassroomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditConsultantWindow.xaml.cs">
+      <DependentUpon>EditConsultantWindow.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ConsultantRecordDetailReport.resx">
+      <DependentUpon>ConsultantRecordDetailReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Model\LC.Model.Business\LC.Model.Business.csproj">
+      <Project>{313602bb-f5ac-4c68-8d7f-4d40f553d58f}</Project>
+      <Name>LC.Model.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Model\LC.Model.Common\LC.Model.Common.csproj">
+      <Project>{a8964e09-3953-48ee-b3b4-1c9bbafe23c5}</Project>
+      <Name>LC.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service\Aisino.MES.Service.Contracts\LC.Service.Contracts.csproj">
+      <Project>{0dae6c2e-d216-4015-ac4b-8a0c8b563b9e}</Project>
+      <Name>LC.Service.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service\Aisino.MES.Service.Services\LC.Service.Services.csproj">
+      <Project>{0a474a95-ebb8-4b60-a206-22244f39c13c}</Project>
+      <Name>LC.Service.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.MES.Client.Common\Aisino.MES.Client.Common.csproj">
+      <Project>{aea20d33-7bb8-48da-a562-4646d8f05a8d}</Project>
+      <Name>Aisino.MES.Client.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.MES.Client.WPFCommon\Aisino.MES.Client.WPFCommon.csproj">
+      <Project>{ad2894a6-2562-4734-a58b-1dade709ce21}</Project>
+      <Name>Aisino.MES.Client.WPFCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aisino.MES.Resources\Aisino.MES.Resources.csproj">
+      <Project>{6f730bd8-fa5c-4a9c-8446-49ac7077863e}</Project>
+      <Name>Aisino.MES.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Pages\CenterAndClassroomManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ConsultantManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ConsultantRecordDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\CheckConsultantMoneyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditCenterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditClassroomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditConsultantWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

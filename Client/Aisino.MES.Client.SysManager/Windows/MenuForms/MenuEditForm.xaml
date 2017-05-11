@@ -1,0 +1,166 @@
+﻿<src:BaseWindow  
+        x:Class="Aisino.MES.Client.SysManager.Windows.MenuForms.MenuEditForm"
+        xmlns:src="clr-namespace:Aisino.MES.Client.WPFCommon.Windows;assembly=Aisino.MES.Client.WPFCommon"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:resx="clr-namespace:Aisino.MES.Resources;assembly=Aisino.MES.Resources"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        Title="EditMenuWindow" Height="480" Width="550" 
+        Style="{DynamicResource WindowStyle}"  
+        WindowStartupLocation="CenterScreen"
+        Loaded="MenuMain_Loaded"  Name="MenuMain">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <s:Double x:Key="LableFontSize">
+                15
+            </s:Double>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Viewbox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <!--<RowDefinition Height="60"></RowDefinition>-->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="15"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="菜单编号" VerticalAlignment="Center" HorizontalAlignment="Right" 
+               Style="{StaticResource WindowLabelStyle}" Height="30"></Label>
+            <TextBox Name="txtMenuCode" Grid.Row="0" Grid.Column="1" 
+                         Style="{StaticResource TextboxStyle}" 
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.ButtonCommand="{Binding TextBoxButtonCmd, Mode=OneWay}"/>
+            <Label Grid.Row="0" Grid.Column="3" Content="菜单名称" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0"
+                Style="{StaticResource WindowLabelStyle}"></Label>
+            <TextBox Name="txtName" Grid.Row="0" Grid.Column="4" Width="150" Style="{StaticResource TextboxStyle}"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.ButtonCommand="{Binding TextBoxButtonCmd, Mode=OneWay}">
+            </TextBox>
+            <Label Grid.Row="1" Grid.Column="0" Content="显示名称" VerticalAlignment="Center" HorizontalAlignment="Right" 
+               Style="{StaticResource WindowLabelStyle}" Height="30"></Label>
+            <TextBox Name="txtDisplayName" Grid.Row="1" Grid.Column="1" 
+                         Style="{StaticResource TextboxStyle}" 
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.ButtonCommand="{Binding TextBoxButtonCmd, Mode=OneWay}"/>
+            <Label Grid.Row="1" Grid.Column="3" Content="序     号" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0"
+                Style="{StaticResource WindowLabelStyle}"></Label>
+            <Controls:NumericUpDown Name="txtShowIndex" Grid.Row="1" Grid.Column="4" 
+                     FontSize="15"
+                                    TextAlignment="Left"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                                    Minimum="1"
+                    Controls:TextBoxHelper.ButtonCommand="{Binding TextBoxButtonCmd, Mode=OneWay}"></Controls:NumericUpDown>
+            <Label Grid.Row="2" Grid.Column="3" Content="菜单类型" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0"
+                Style="{StaticResource WindowLabelStyle}"></Label>
+            <ComboBox Name="cmbMenuType" Grid.Row="2" Grid.Column="4" 
+                      Style="{StaticResource ComboboxStyle}"
+                      Controls:TextBoxHelper.Watermark=""
+                      IsEnabled="True"
+                      Controls:ComboBoxHelper.EnableVirtualizationWithGrouping="True">
+                <ComboBox.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock />
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ComboBox.GroupStyle>
+            </ComboBox>
+            <Label Grid.Row="2" Grid.Column="0" Content="父级菜单" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0"
+                Style="{StaticResource WindowLabelStyle}"></Label>
+            <ComboBox Name="cmbParent" Grid.Row="2" Grid.Column="1" DisplayMemberPath="Name"
+                      Style="{StaticResource ComboboxStyle}"
+                      Controls:TextBoxHelper.Watermark=""
+                      IsEnabled="True"
+                      Controls:ComboBoxHelper.EnableVirtualizationWithGrouping="True">
+                <ComboBox.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding Path=Name}" />
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ComboBox.GroupStyle>
+            </ComboBox>
+            <Label Grid.Row="3" Grid.Column="0" Content="模     块" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0"
+                Style="{StaticResource WindowLabelStyle}"></Label>
+            <ComboBox Name="cmbModule" Grid.Row="3" Grid.Column="1" DisplayMemberPath="Name" SelectionChanged="cmbModule_SelectionChanged"
+                      Style="{StaticResource ComboboxStyle}"
+                      Controls:TextBoxHelper.Watermark=""
+                      IsEnabled="True"
+                      Controls:ComboBoxHelper.EnableVirtualizationWithGrouping="True">
+                <ComboBox.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding Path=Name}" />
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ComboBox.GroupStyle>
+            </ComboBox>
+            <Label Grid.Row="3" Grid.Column="3" Content="方     法" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0"
+                Style="{StaticResource WindowLabelStyle}"></Label>
+            <ComboBox Name="cmbFunction" Grid.Row="3" Grid.Column="4" DisplayMemberPath="Name"
+                      Style="{StaticResource ComboboxStyle}"
+                      Controls:TextBoxHelper.Watermark=""
+                      IsEnabled="True"
+                      Controls:ComboBoxHelper.EnableVirtualizationWithGrouping="True">
+                <ComboBox.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding Path=Name}" />
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ComboBox.GroupStyle>
+            </ComboBox>
+            <!--<StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+                <Button Height="30" Width="60" Margin=" 15 0 0 0 ">大图标</Button>
+                <Button Height="30" Width="60" Margin="60 0 0 0">小图标</Button>
+                <CheckBox Margin="70 0 0 0">显示文本</CheckBox>
+                <CheckBox Margin="70 0 0 0">显示图片</CheckBox>
+            </StackPanel>-->
+            <Label Grid.Row="4" Grid.Column="0" Content="菜单描述" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0"
+                Style="{StaticResource WindowLabelStyle}"></Label>
+            <TextBox Name="txtMenuRemark" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" 
+                     Style="{DynamicResource TextboxStyle}"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True" 
+                     Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.ButtonCommand="{Binding TextBoxButtonCmd, Mode=OneWay}"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                     Height="60"></TextBox>
+            <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="btnOK" 
+                        HorizontalAlignment="Center" Content="确 认" 
+                        Click="btnOK_Click">
+                </Button>
+                <Button Name="btnCancel" 
+                        Margin="10,0,0,0" HorizontalAlignment="Center" Content="取 消" 
+                        Click="btnCancel_Click">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</src:BaseWindow>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="LC.Service.Services.SysManager.MenuModelService,LC.Service.Services" Factory=" LC.Service.IISHost.WcfServiceFactory" %>

@@ -1,0 +1,150 @@
+﻿<src:BusinessBasePage
+    x:Class="Aisino.MES.Client.SysManager.Pages.LogManagerPage"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:src="clr-namespace:Aisino.MES.Client.WPFCommon.BasePages;assembly=Aisino.MES.Client.WPFCommon"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"  
+    xmlns:AisinoCommonControls="clr-namespace:Aisino.MES.Client.WPFCommon.Controls;assembly=Aisino.MES.Client.WPFCommon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"     
+    mc:Ignorable="d"      
+	Title="日志管理" Loaded="BusinessBasePage_Loaded" SizeChanged="BusinessBasePage_SizeChanged" >
+    <src:BusinessBasePage.Resources>
+        <!--<Style x:Key="l" TargetType="Button">
+            <Setter Property="Background"  Value="Blue"/>
+        </Style>-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.Resources;component/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/TerlerikStyle/RadGridViewCommon.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/TerlerikStyle/RadDataPagerCommonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MetroDemo;component/MainWindowViewModel.cs" />-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </src:BusinessBasePage.Resources>
+    <Viewbox Stretch="Uniform" >
+        <DockPanel Name="dockPanel">        
+            <Grid DockPanel.Dock="Top" Height="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition  Width="50"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="1" Grid.Column="1" Content="用户" Style="{StaticResource WindowLabelStyle}"></Label>
+                <ComboBox Name="cmbUser" Grid.Row="1" Grid.Column="2" Height="25" Style="{StaticResource ComboboxStyle}"></ComboBox>
+
+                <Label Grid.Row="1" Grid.Column="4" Content="模块" Style="{StaticResource WindowLabelStyle}"></Label>
+                <ComboBox Name="cmbModule" Grid.Row="1" Grid.Column="5" Height="25" Style="{StaticResource ComboboxStyle}"></ComboBox>
+
+                <Label Grid.Row="2" Grid.Column="1" Content="日期" Height="30" Style="{StaticResource WindowLabelStyle}"></Label>
+                <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+                    <DatePicker Name="dpStartDate" Width="160"  Height="25" FontFamily="Microsoft YaHei UI"></DatePicker>
+                    <Label Content="—" Height="30"></Label>
+                    <DatePicker Name="dpEndDate" Width="160" Height="25" FontFamily="Microsoft YaHei UI"></DatePicker>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3" Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <AisinoCommonControls:DeleteControl Background="Transparent" Cursor="Hand"
+                                                        Width="40" Height="40" 
+                                                        Margin="20,0,0,0" MouseLeftButtonUp="DeleteControl_MouseLeftButtonUp"/>
+                    <AisinoCommonControls:SearchControl HorizontalAlignment="Right" Background="Transparent" 
+                                                        Width="40" Height="40" Cursor="Hand"
+                                                        Margin="0,0,0,0" MouseLeftButtonUp="SearchControl_MouseLeftButtonUp"/>
+                    <!--Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=StackPanel}-->
+                    
+                </StackPanel>
+            </Grid>
+            <telerik:RadDataPager Name="rdpLog" DockPanel.Dock="Bottom" Height="30"
+                                  DisplayMode="FirstLastPreviousNextNumeric, Text"
+                                  IsTotalItemCountFixed="True" PageIndexChanging="rdpLog_PageIndexChanging"
+                                  BorderBrush="#FFB1DDF8" Background="#FFB1DDF8" NumericButtonStyle="{StaticResource RadDataPagerNagviation}">
+
+            </telerik:RadDataPager>
+            <telerik:RadGridView x:Name="gvLog"  SelectionMode="Extended" Height="340"
+							 Style="{StaticResource PageGridViewStyle}" CanUserInsertRows="True" >
+                <telerik:RadGridView.Columns>
+                    <!--<telerik:GridViewDataColumn IsReadOnly="True" >
+                        <telerik:GridViewDataColumn.Header>
+                            <CheckBox Name="chkAllChecked" Width="15" Height="15" HorizontalAlignment="Center" Click="chkAllChecked_Click"/>
+                        </telerik:GridViewDataColumn.Header>
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Width="15" Height="15" HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewCheckBoxColumn Name="chk" Width="20" 
+                                                    AutoSelectOnEdit="True" EditTriggers="CellClick" MouseLeftButtonUp="chk_MouseLeftButtonUp">
+                        <telerik:GridViewCheckBoxColumn.Header>
+                            <CheckBox Content="Select" Name="chkc" Foreground="White"></CheckBox>
+                        </telerik:GridViewCheckBoxColumn.Header>
+                        <telerik:GridViewCheckBoxColumn.CellStyle>
+                            <Style TargetType="telerik:GridViewCell">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </telerik:GridViewCheckBoxColumn.CellStyle>
+                    </telerik:GridViewCheckBoxColumn>-->
+                        <telerik:GridViewSelectColumn />
+                        <telerik:GridViewDataColumn Header="编号"
+                                                Width="60"
+											    DataMemberBinding="{Binding Id}"
+                                                Tag="{Binding Id}"
+                                                IsGroupable="False"
+                                                IsFilterable="False" >
+                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Id}"/>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellEditTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="用户编号"
+                                                IsGroupable="False"
+                                                IsFilterable="False"
+                                                Width="100"
+											    DataMemberBinding="{Binding UserCode}"/>
+
+                        <telerik:GridViewDataColumn Header="用户名"
+                                                IsGroupable="False"
+                                                IsFilterable="False"
+                                                Width="100"
+											    DataMemberBinding="{Binding UserName}"/>
+                        <telerik:GridViewDataColumn Header="操作时间"
+                                                Width="150"
+											    DataMemberBinding="{Binding LogTime}" 
+                                                DataFormatString="yyyy/MM/dd HH:mm:ss"                                                
+                                                />
+                    <telerik:GridViewDataColumn Header="日志类型"
+                                                Width="100"
+											    DataMemberBinding="{Binding LogType}"                                                
+                                                />
+                    <telerik:GridViewDataColumn Header="操作IP"
+                                                Width="100"
+											    DataMemberBinding="{Binding OperateIp}"                                                
+                                                />
+                    <telerik:GridViewDataColumn Header="操作mac地址"
+                                                Width="100"
+											    DataMemberBinding="{Binding OperatorMac}"                                                
+                                                />
+                    <telerik:GridViewDataColumn Header="操作"
+                                                Width="100"
+											    DataMemberBinding="{Binding Operate}"                                                
+                                                />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </DockPanel>
+    </Viewbox>
+</src:BusinessBasePage>

@@ -1,0 +1,77 @@
+﻿<src:BaseWindow  x:Class="LC.BaseManager.Windows.EditClassroomWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{DynamicResource WindowStyle}" 
+        xmlns:src="clr-namespace:Aisino.MES.Client.WPFCommon.Windows;assembly=Aisino.MES.Client.WPFCommon"
+        Title="EditClassroomWindow" Height="300" Width="650" Loaded="MetroWindow_Loaded" WindowStartupLocation="CenterScreen"
+        BorderThickness="1" BorderBrush="#FFD4D2D2">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Validation.ErrorTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <DockPanel LastChildFill="True">
+                                <TextBlock DockPanel.Dock="Right" 
+                                       Foreground="Red" 
+                                       Margin="5,0,5,0"
+                                       Text="*"/>
+                                <Border BorderBrush="Red" BorderThickness="1">
+                                    <AdornedElementPlaceholder Name="ph"/>
+                                </Border>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="true">
+                        <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Viewbox Name="viewBox">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="52"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="48"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Label Grid.Row="0" Grid.Column="0" Content="教室名称" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="12,16,18,16"
+                Style="{DynamicResource WindowLabelStyle}" Height="28" Width="70"></Label>
+            <TextBox Name="txtName" Grid.Row="0" Grid.Column="1" Style="{DynamicResource TextboxStyle}" 
+                     Controls:TextBoxHelper.ClearTextButton="True"
+                     Controls:TextBoxHelper.ButtonCommand="{Binding TextBoxButtonCmd, Mode=OneWay}" Height="Auto" Margin="3,15"/>
+            <Label Grid.Row="0" Grid.Column="3" Content="人数上限" VerticalAlignment="Center" HorizontalAlignment="Center"  
+                Style="{DynamicResource WindowLabelStyle}" Height="28" Margin="18,16,12,16" Width="70"></Label>
+            <Controls:NumericUpDown Name="UpperLimit"  Grid.Row="0" Grid.Column="4" FontSize="15"
+                                        TextAlignment="Left"
+                                        Controls:TextBoxHelper.Watermark="请输入人数上限..."
+                                        Minimum="0" Height="26" Margin="0,17" />
+            <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0" Width="170">
+                <Button Name="btnOK" Content="确认" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Click="btnOK_Click"></Button>
+                <!--Style="{DynamicResource WindowButtonStyle}"-->
+                <Button Name="btnCancel" Content="取消" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0"
+                 Click="btnCancel_Click"></Button>
+            </StackPanel>
+
+        </Grid>
+    </Viewbox>
+</src:BaseWindow>

@@ -1,0 +1,86 @@
+﻿<src:BusinessBasePage
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:src="clr-namespace:Aisino.MES.Client.WPFCommon.BasePages;assembly=Aisino.MES.Client.WPFCommon"
+      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Aisino.MES.Client.SysManager.Pages.DeptAndUserManagerPage"
+      xmlns:telerikGrid="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"  
+      xmlns:AisinoCommonControls="clr-namespace:Aisino.MES.Client.WPFCommon.Controls;assembly=Aisino.MES.Client.WPFCommon"
+    xmlns:model ="clr-namespace:LC.Model.Business.SysManager;assembly=LC.Model.Business"  
+    mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+        Style="{DynamicResource PageStyle}" 
+	  Title="人员管理" SizeChanged="BusinessBasePage_SizeChanged" Loaded="Window_Loaded">
+
+    <src:BusinessBasePage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.Resources;component/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/TerlerikStyle/RadGridViewCommon.xaml"/>
+            </ResourceDictionary.MergedDictionaries>            
+        </ResourceDictionary>
+    </src:BusinessBasePage.Resources>
+
+    <Viewbox Stretch="Uniform" Name="viewBox">
+        <DockPanel LastChildFill="true" Height="600" Width="900" Name="dockPanel">
+            <telerik:RadGridView x:Name="gvUsers"	
+                                 NewRowPosition="Top" GroupRenderMode="Flat"
+                                 AddingNewDataItem ="gvUsers_AddingNewDataItem"
+                                 CanUserInsertRows="True"
+                                 IsReadOnly="False"
+							     Style="{StaticResource PageGridViewStyle}"
+                                 NewRowStyle="{StaticResource GridViewNewRowStyle}"
+                                 ShowColumnSortIndexes="True">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="姓名"
+                                                IsGroupable="False"
+                                                IsFilterable="False"
+                                                Width="80"
+											DataMemberBinding="{Binding Name}">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadDatePicker SelectedDate="{Binding Name, Mode=TwoWay}" />
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="性别"
+                                                Width="120"
+											DataMemberBinding="{Binding Sex}"
+                                                />
+                    <telerik:GridViewDataColumn Header="电话"
+                                                Width="100"
+											DataMemberBinding="{Binding Mobile}" />
+                    <telerik:GridViewDataColumn Header="职位"
+											DataMemberBinding="{Binding Position}" 
+											Width="*" />
+                    <telerik:GridViewColumn Width="50" >
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <AisinoCommonControls:EditControl MouseLeftButtonUp="btnUpdateUser_Click" 
+                                                                  /> <!--Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"-->
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                    <telerik:GridViewColumn Width="50" >
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <AisinoCommonControls:DeleteControl MouseLeftButtonUp="btnDeleteUser_Click" 
+                                                                    /> <!--Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"-->
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+
+        </DockPanel>
+    </Viewbox>
+</src:BusinessBasePage>

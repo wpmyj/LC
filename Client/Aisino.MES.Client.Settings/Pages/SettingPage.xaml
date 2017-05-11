@@ -1,0 +1,129 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      x:Class="Aisino.MES.Client.Settings.Pages.SettingPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="600"
+	  Title="SettingPage" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid Background="White">
+        <Grid.Resources>
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="151*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="253*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0"
+                   Margin="0,0,0,0"
+                   Content="Setting"
+                   Style="{DynamicResource DescriptionHeaderStyle}"
+                   FontSize="30" Width="114" Foreground="#FF17559E"/>
+        <Label Grid.Row="0" Grid.Column="1"
+                   HorizontalAlignment="Stretch"
+                   VerticalContentAlignment="Bottom"
+                   Margin="0,0,0,0"
+                 Name="LTestConnect"
+                   Content="服务器连接……"
+                   Style="{DynamicResource DescriptionHeaderStyle}"
+                   FontSize="15" Foreground="#FF17559E"/>
+        <DockPanel LastChildFill="True" Grid.Row="1" Grid.ColumnSpan="2">
+            <!--<TabControl Name="SettingTab" Controls:TabControlHelper.IsUnderlined="True" >-->
+            <Controls:MetroAnimatedSingleRowTabControl x:Name="MainTabControl" >
+                <Controls:MetroTabItem Header="服务连接设置">
+                    <Grid Margin="0,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="20" Margin="0,5"
+                                           Text="服务地址" Grid.Row="1" HorizontalAlignment="Center" />
+                        <TextBox Name="ServiceHostAddressText" Margin="0, 0, 0, 0" Grid.Row="1" Grid.Column="1" FontSize="20" Height="35" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                                 Controls:TextBoxHelper.IsWaitingForData="True"
+                                 Controls:TextBoxHelper.ClearTextButton="True"
+                                Controls:TextBoxHelper.ButtonCommand="{Binding TextBoxButtonCmd, Mode=OneWay}"
+                            Text="" FontFamily="Microsoft YaHei">
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}"
+                               BasedOn="{StaticResource MetroTextBox}">
+                                    <Setter Property="Controls:TextBoxHelper.ClearTextButton" Value="True"></Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="Controls:TextBoxHelper.HasText"
+                                         Value="False">
+                                            <Setter Property="Controls:TextBoxHelper.ClearTextButton"
+                                            Value="False" />
+                                            <Setter Property="Controls:TextBoxHelper.Watermark"
+                                            Value="请输入服务链接..." />
+                                        </Trigger>
+                                        <Trigger Property="Controls:TextBoxHelper.HasText"
+                                         Value="True">
+                                            <Setter Property="Controls:TextBoxHelper.ClearTextButton"
+                                            Value="True" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <Button Name="BtnSaveHostAddress" Width="100" Grid.Column="2" Grid.Row="1" Height="35" VerticalAlignment="Top"
+                    Margin="0, 0, 0, 0"
+                    Content="保 存" FontSize="20"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" FontFamily="Microsoft YaHei UI" FontWeight="Normal" Click="BtnSaveHostAddress_Click" />
+                    </Grid>
+                </Controls:MetroTabItem>
+                <Controls:MetroTabItem Header="报表服务设置">
+                    <Frame Source="SettingPages/ReportServerSettingPage.xaml" NavigationUIVisibility="Hidden">
+
+                    </Frame>
+                </Controls:MetroTabItem>
+                <Controls:MetroTabItem Header="系统语言设置">
+                    <Grid Margin="0,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="20" Margin="0,5"
+                                           Text="系统语言" Grid.Row="1" HorizontalAlignment="Center" />
+                        <ComboBox Name="cmbCulture" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                      Height="35" FontFamily="Verdana,Microsoft YaHei" FontSize="15"                                          
+                      IsEnabled="True">
+                            <ComboBoxItem Content="en-US"></ComboBoxItem>
+                            <ComboBoxItem Content="zh-CN"></ComboBoxItem>
+                        </ComboBox>
+                        <Button Name="BtnSaveCulture" Width="100" Grid.Column="2" Grid.Row="1" Height="35" VerticalAlignment="Top"
+                    Margin="0, 0, 0, 0"
+                    Content="保 存" FontSize="20"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" FontFamily="Microsoft YaHei UI" FontWeight="Normal" Click="BtnSaveCulture_Click" />
+                    </Grid>
+                </Controls:MetroTabItem>
+            </Controls:MetroAnimatedSingleRowTabControl>
+            <!--</TabControl>-->
+        </DockPanel>
+
+    </Grid>
+</Page>

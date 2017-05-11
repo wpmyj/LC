@@ -1,0 +1,650 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:ec="http://schemas.microsoft.com/expression/2010/controls"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    mc:Ignorable="d">
+    <!--此字典为 MultilayerWindowShell使用的 Button 专用 样式字典 -->
+    <!--Designed by ye.wang - 2013.11.24 -->
+
+    <Style x:Key="ButtonFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2"
+                               SnapsToDevicePixels="true"
+                               Stroke="{DynamicResource Button.Focused.Border}"
+                               StrokeThickness="1"
+                               StrokeDashArray="1 2" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=MLButtonTemplate, TypeInTargetAssembly={x:Type Button}}"
+                     TargetType="{x:Type Button}">
+        <Border x:Name="Border"
+                Background="{TemplateBinding Background}"
+                
+                TextBlock.Foreground="{TemplateBinding Foreground}"
+                d:DesignWidth="24"
+                d:DesignHeight="24">
+            <Grid Background="Transparent">
+                <Border x:Name="BorderMask"
+                        Background="{DynamicResource Button.Normal.BackgroundMask}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" />
+                <Border x:Name="FocusedBorder"
+                        Background="{DynamicResource Button.Focused.BackgroundMask}"
+                        BorderThickness="{DynamicResource Button.Focused.BorderThickness}"
+                        Visibility="Collapsed"
+                        BorderBrush="{DynamicResource Button.Focused.Border}" />
+                <Border x:Name="HoverBorder"
+                        Background="{DynamicResource Button.MouseOver.BackgroundMask}"
+                        BorderThickness="{DynamicResource Button.MouseOver.BorderThickness}"
+                        Visibility="Collapsed"
+                        BorderBrush="{DynamicResource Button.MouseOver.Border}" />
+                <Border x:Name="PressedBorder"
+                        Visibility="Collapsed"
+                        BorderThickness="{DynamicResource Button.Pressed.BorderThickness}"
+                        Background="{DynamicResource Button.Pressed.BackgroundMask}"
+                        BorderBrush="{DynamicResource Button.Pressed.Border}" />
+                <ContentPresenter x:Name="contentPresenter"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Margin="{TemplateBinding Padding}" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Button.Disabled.Foreground}" />
+                <Setter Property="Background"
+                        Value="{DynamicResource Button.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Button.Disabled.Border}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="HoverBorder"
+                        Value="Visible" />
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Button.MouseOver.Foreground}" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="PressedBorder"
+                        Value="Visible" />
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Button.Pressed.Foreground}" />
+            </Trigger>
+            <Trigger Property="IsFocused"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="FocusedBorder"
+                        Value="Visible" />
+            </Trigger>
+            
+            <Trigger Property="IsDefault"
+                     Value="True">
+                <!--<Setter Property="Visibility"
+                        TargetName="FocusedBorder"
+                        Value="Visible" />-->
+                <Setter Property="FocusManager.FocusedElement"
+                        Value="{Binding RelativeSource={RelativeSource Self}}" />
+            </Trigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=MLButtonStyle, TypeInTargetAssembly={x:Type Button}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
+        <Setter Property="FontSize"
+                Value="{DynamicResource Button.Static.FontSize}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{DynamicResource ButtonFocusVisual}" />
+        <Setter Property="Background"
+                Value="{DynamicResource Button.Normal.Background}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource Button.Normal.Border}" />
+        <Setter Property="BorderThickness"
+                Value="{DynamicResource Button.Static.BorderThickness}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource Button.Normal.Foreground}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Padding"
+                Value="1" />
+        <Setter Property="Template"
+                Value="{DynamicResource {ComponentResourceKey ResourceId=MLButtonTemplate, TypeInTargetAssembly={x:Type Button}}}" />
+        <Setter Property="Focusable"
+                Value="True" />
+        <Setter Property="Margin"
+                Value="4,2" />
+        <Setter Property="Padding"
+                Value="4,2" />
+        <Setter Property="FontFamily"
+                Value="{DynamicResource Button.Static.FontFamily}" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=MLCtrlButtonStyle, TypeInTargetAssembly={x:Type Button}}"
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLButtonStyle, TypeInTargetAssembly={x:Type Button}}}">
+        <Setter Property="Background"
+                Value="Transparent" />
+    </Style>
+
+    <Style TargetType="{x:Type Button}"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLButtonStyle, TypeInTargetAssembly={x:Type Button}}}">
+        <Setter Property="Padding"
+                Value="6,2" />
+    </Style>
+
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=MLMinButtonTemplate, TypeInTargetAssembly={x:Type Button}}"
+                     TargetType="{x:Type Button}">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                d:DesignWidth="24"
+                d:DesignHeight="24">
+            <Grid Background="Transparent">
+                <Border x:Name="HoverBorder"
+                        Background="{DynamicResource Button.MouseOver.BackgroundMask}"
+                        Visibility="Collapsed" />
+                <Border x:Name="PressedBorder"
+                        Visibility="Collapsed"
+                        Background="{DynamicResource Button.Pressed.BackgroundMask}" />
+                <Path Data="{DynamicResource MinButton.Geometry}"
+                      Stretch="Uniform"
+                      Fill="{DynamicResource Button.Normal.Foreground}"
+                      Width="12"
+                      Height="12"
+                      Margin="0,0,0,0" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Button.Disabled.Foreground}" />
+                <Setter Property="Background"
+                        Value="{DynamicResource Button.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Button.Disabled.Border}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="HoverBorder"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="PressedBorder"
+                        Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=MLWindowMinBtnStyle, TypeInTargetAssembly={x:Type Button}}"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLCtrlButtonStyle, TypeInTargetAssembly={x:Type Button}}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="Template"
+                Value="{DynamicResource {ComponentResourceKey ResourceId=MLMinButtonTemplate, TypeInTargetAssembly={x:Type Button}}}" />
+    </Style>
+
+    <!--Plug-in Button-->
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=MLPluginButtonTemplate, TypeInTargetAssembly={x:Type Button}}"
+                     TargetType="{x:Type Button}">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                d:DesignWidth="24"
+                d:DesignHeight="24">
+            <Grid Background="Transparent">
+                <Border x:Name="HoverBorder"
+                        Background="{DynamicResource Button.MouseOver.BackgroundMask}"
+                        Visibility="Collapsed" />
+                <Border x:Name="PressedBorder"
+                        Visibility="Collapsed"
+                        Background="{DynamicResource Button.Pressed.BackgroundMask}" />
+                <Path Data="{DynamicResource PluginButton.Geometry}"
+                      Stretch="Uniform"
+                      Fill="{DynamicResource Button.Normal.Foreground}"
+                      Width="12"
+                      Height="12"
+                      Margin="0,0,0,0" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Button.Disabled.Foreground}" />
+                <Setter Property="Background"
+                        Value="{DynamicResource Button.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Button.Disabled.Border}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="HoverBorder"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="PressedBorder"
+                        Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=MLPluginButtonStyle, TypeInTargetAssembly={x:Type Button}}"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLCtrlButtonStyle, TypeInTargetAssembly={x:Type Button}}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="Template"
+                Value="{DynamicResource {ComponentResourceKey ResourceId=MLPluginButtonTemplate, TypeInTargetAssembly={x:Type Button}}}" />
+    </Style>
+    
+    <!--MaxButton-->
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=MLMaxButtonTemplate, TypeInTargetAssembly={x:Type Button}}"
+                     TargetType="{x:Type Button}">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                d:DesignWidth="24"
+                d:DesignHeight="24">
+            <Grid Background="Transparent">
+                <Border x:Name="HoverBorder"
+                        Background="{DynamicResource Button.MouseOver.BackgroundMask}"
+                        Visibility="Collapsed" />
+                <Border x:Name="PressedBorder"
+                        Visibility="Collapsed"
+                        Background="{DynamicResource Button.Pressed.BackgroundMask}" />
+
+                <Path Data="{DynamicResource MaxButton.Geometry}"
+                      Stretch="Uniform"
+                      Fill="{TemplateBinding Foreground}"
+                      Width="12"
+                      Height="12"
+                      Margin="0,0,0,0" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Button.Disabled.Foreground}" />
+                <Setter Property="Background"
+                        Value="{DynamicResource Button.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Button.Disabled.Border}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="HoverBorder"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="PressedBorder"
+                        Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=MLWindowMaxBtnStyle, TypeInTargetAssembly={x:Type Button}}"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLCtrlButtonStyle, TypeInTargetAssembly={x:Type Button}}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="Template"
+                Value="{DynamicResource {ComponentResourceKey ResourceId=MLMaxButtonTemplate, TypeInTargetAssembly={x:Type Button}}}" />
+    </Style>
+    <!--CloseButton-->
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=MLCloseButtonTemplate, TypeInTargetAssembly={x:Type Button}}"
+                     TargetType="{x:Type Button}">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                d:DesignWidth="24"
+                d:DesignHeight="24">
+            <Grid Background="Transparent">
+                <Border x:Name="HoverBorder"
+                        Background="{DynamicResource CloseButton.MouseOver.Background}"
+                        Visibility="Collapsed" />
+                <Border x:Name="PressedBorder"
+                        Visibility="Collapsed"
+                        Background="{DynamicResource CloseButton.Pressed.Background}" />
+
+                <Path Data="{DynamicResource CloseButton.Geometry}"
+                      Stretch="Uniform"
+                      Fill="{TemplateBinding Foreground}"
+                      Width="12"
+                      Height="12"
+                      Margin="0,0,0,0"
+                      RenderTransformOrigin="0.5,0.5" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Button.Disabled.Foreground}" />
+                <Setter Property="Background"
+                        Value="{DynamicResource Button.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Button.Disabled.Border}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="HoverBorder"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="PressedBorder"
+                        Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="{ComponentResourceKey ResourceId=MLWindowCloseBtnStyle, TypeInTargetAssembly={x:Type Button}}"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLCtrlButtonStyle, TypeInTargetAssembly={x:Type Button}}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="Template"
+                Value="{DynamicResource {ComponentResourceKey ResourceId=MLCloseButtonTemplate, TypeInTargetAssembly={x:Type Button}}}" />
+    </Style>
+
+    <!--PopupSubmitButton-->
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=PopupSubmitButtonTemplate, TypeInTargetAssembly={x:Type Button}}"
+                     TargetType="{x:Type Button}">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                d:DesignWidth="24"
+                d:DesignHeight="24">
+            <Grid Background="Transparent">
+                <Border x:Name="HoverBorder"
+                        Background="{DynamicResource Button.MouseOver.BackgroundMask}"
+                        Visibility="Collapsed" />
+                <Border x:Name="PressedBorder"
+                        Visibility="Collapsed"
+                        Background="{DynamicResource Button.Pressed.BackgroundMask}" />
+
+                <Path Data="{DynamicResource SubmitButton.Geometry}"
+                      Stretch="Uniform"
+                      Fill="{TemplateBinding Foreground}"
+                      Width="12"
+                      Height="12"
+                      Margin="0,0,0,0" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <Trigger Property="IsEnabled"
+                     Value="false">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Button.Disabled.Foreground}" />
+                <Setter Property="Background"
+                        Value="{DynamicResource Button.Disabled.Background}" />
+                <Setter Property="BorderBrush"
+                        Value="{DynamicResource Button.Disabled.Border}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="HoverBorder"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Visibility"
+                        TargetName="PressedBorder"
+                        Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=PopupSubmitButtonStyle, TypeInTargetAssembly={x:Type Button}}"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLCtrlButtonStyle, TypeInTargetAssembly={x:Type Button}}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="Template"
+                Value="{DynamicResource {ComponentResourceKey ResourceId=PopupSubmitButtonTemplate, TypeInTargetAssembly={x:Type Button}}}" />
+        <Setter Property="Width"
+                Value="25" />
+        <Setter Property="Height"
+                Value="25" />
+    </Style>
+
+    <!--PopupCloseButton-->
+    <Style x:Key="{ComponentResourceKey ResourceId=PopupCloseButtonStyle, TypeInTargetAssembly={x:Type Button}}"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLCtrlButtonStyle, TypeInTargetAssembly={x:Type Button}}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="Template"
+                Value="{DynamicResource {ComponentResourceKey ResourceId=MLCloseButtonTemplate, TypeInTargetAssembly={x:Type Button}}}" />
+        <Setter Property="Width"
+                Value="25" />
+        <Setter Property="Height"
+                Value="25" />
+    </Style>
+
+    <!--MessageBoxButtonStyle-->
+    <Style x:Key="MessageBoxButtonStyle"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MLButtonStyle, TypeInTargetAssembly={x:Type Button}}}"
+           TargetType="{x:Type Button}" />
+
+    <!--ResizeGrip-->
+    <Style TargetType="{x:Type ResizeGrip}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ResizeGrip}">
+                    <Grid Height="{TemplateBinding Height}"
+                          Width="{TemplateBinding Width}"
+                          d:DesignWidth="10"
+                          d:DesignHeight="10">
+                        <Grid.Resources>
+                            <System:Double x:Key="resizeGripCSize">2.5</System:Double>
+                            <System:Double x:Key="resizeGripBorderCSize">1.5</System:Double>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <!--<Path x:Name="line"
+                              Data="F1 M 0.208313,77.9487L 80.2083,77.9487L 80.2083,-1.52588e-005L 61.4032,16.5587L 61.4959,60.6481L 17.5833,61.1457L 0,78.0625z"
+                              Stretch="Uniform"
+                              Fill="{TemplateBinding Background}"
+                              Width="18"
+                              Height="18"
+                              Margin="0,0,0,0"
+                              RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>-->
+                        <Ellipse Grid.Row="0"
+                                 Grid.Column="3"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+
+                        <Ellipse Grid.Row="1"
+                                 Grid.Column="2"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+                        <Ellipse Grid.Row="1"
+                                 Grid.Column="3"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+
+                        <Ellipse Grid.Row="2"
+                                 Grid.Column="1"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+                        <Ellipse Grid.Row="2"
+                                 Grid.Column="2"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+                        <Ellipse Grid.Row="2"
+                                 Grid.Column="3"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+
+                        <Ellipse  Grid.Row="3"
+                                  Grid.Column="0"
+                                  Width="{DynamicResource resizeGripCSize}"
+                                  Height="{DynamicResource resizeGripCSize}"
+                                  Fill="{TemplateBinding Background}"
+                                  Stroke="#00FFFFFF"
+                                  StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+                        <Ellipse Grid.Row="3"
+                                 Grid.Column="1"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+                        <Ellipse Grid.Row="3"
+                                 Grid.Column="2"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+                        <Ellipse Grid.Row="3"
+                                 Grid.Column="3"
+                                 Width="{DynamicResource resizeGripCSize}"
+                                 Height="{DynamicResource resizeGripCSize}"
+                                 Fill="{TemplateBinding Background}"
+                                 Stroke="#00FFFFFF"
+                                 StrokeThickness="{DynamicResource resizeGripBorderCSize}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background"
+                Value="{DynamicResource Window.Static.ResizeGrip.Background}" />
+    </Style>
+
+    <!--**********************************-->
+
+    <Style x:Key="{ComponentResourceKey ResourceId=HyperLinkButtonStyle, TypeInTargetAssembly={x:Type Button}}"
+           TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle"
+                Value="{DynamicResource ButtonFocusVisual}" />
+        <Setter Property="Background"
+                Value="#00FFFFFF" />
+        <Setter Property="BorderBrush"
+                Value="#00FFFFFF" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="FontSize"
+                Value="{DynamicResource Button.Static.FontSize}" />
+        <Setter Property="FontFamily"
+                Value="{DynamicResource Button.Static.FontFamily}" />
+
+        <Setter Property="Foreground"
+                Value="{DynamicResource HyperLinkButton.Normal.Foreground}" />
+
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Top" />
+        <Setter Property="Padding"
+                Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Chrome"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="true">
+                        <TextBlock x:Name="InnerText"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   Margin="{TemplateBinding Padding}"
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Text="{TemplateBinding Content}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   Cursor="Hand" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource HyperLinkButton.MouseOver.Foreground}" />
+                            <Setter Property="TextDecorations"
+                                    TargetName="InnerText"
+                                    Value="Underline" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="true">
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource HyperLinkButton.Pressed.Foreground}" />
+                            <Setter Property="TextDecorations"
+                                    TargetName="InnerText"
+                                    Value="Underline" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource HyperLinkButton.Disabled.Foreground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+    </Style>
+</ResourceDictionary>

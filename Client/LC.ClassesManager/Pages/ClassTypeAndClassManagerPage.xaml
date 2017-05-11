@@ -1,0 +1,220 @@
+﻿<src:BusinessBasePage x:Class="LC.ClassesManager.Pages.ClassTypeAndClassManagerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:src="clr-namespace:Aisino.MES.Client.WPFCommon.BasePages;assembly=Aisino.MES.Client.WPFCommon"
+      xmlns:AisinoCommonControls="clr-namespace:Aisino.MES.Client.WPFCommon.Controls;assembly=Aisino.MES.Client.WPFCommon" 
+      xmlns:s="clr-namespace:System;assembly=mscorlib"
+      xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+      xmlns:telerikGrid="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView"
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:lex="http://wpflocalizeextension.codeplex.com"
+                      lex:LocalizeDictionary.DesignCulture="zh-CN"
+                      lex:ResxLocalizationProvider.DefaultAssembly="Aisino.MES.Resources"
+                      lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+      mc:Ignorable="d" SizeChanged="BusinessBasePage_SizeChanged"  Loaded="BusinessBasePage_Loaded"
+      d:DesignHeight="600" d:DesignWidth="900"
+      Style="{DynamicResource PageStyle}"
+	Title="ClassTypeAndClassManagerPage">
+    <src:BusinessBasePage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.Resources;component/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/TerlerikStyle/RadGridViewCommon.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </src:BusinessBasePage.Resources>
+
+    <Viewbox Stretch="Uniform" Name="viewBox">
+        <DockPanel LastChildFill="true" Height="600" Width="900" Name="dockPanel">
+            <telerik:RadGridView x:Name="gvClassTypes" VerticalAlignment="Stretch"  DockPanel.Dock="Top" Height="300"
+							                         Style="{StaticResource PageGridViewStyle}" 
+                                                     NewRowPosition="Top" GroupRenderMode="Flat"
+                                                     NewRowStyle="{StaticResource GridViewNewRowStyle}"
+                                                     EditTriggers="F2" ActionOnLostFocus="None" 
+                                                     CanUserInsertRows="True" AddingNewDataItem="gvClassTypes_AddingNewDataItem"
+                                                     IsReadOnly="False"
+                                                     CanUserDeleteRows="True"
+                                                    SelectionChanged="gvClassTypes_SelectionChanged" 
+                                                        >
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="ClassTypeName"
+                                                                    UniqueName="ClassTypeName"
+											    DataMemberBinding="{Binding Name}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="TotalLessons"
+                                                                    UniqueName="TotalLessons"
+											    DataMemberBinding="{Binding TotalLessons}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="UnitPrice"
+                                                                    UniqueName="UnitPrice"
+											    DataMemberBinding="{Binding UnitPrice}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="TeacherRate"
+                                                                    UniqueName="TeacherRate"
+											    DataMemberBinding="{Binding TeacherRate}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="AssistantRate"
+                                                                    UniqueName="AssistantRate"
+											    DataMemberBinding="{Binding AssistantRate}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="ConsultantRate"
+                                                                    UniqueName="ConsultantRate"
+											    DataMemberBinding="{Binding ConsultantRate}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="StudentLimit"
+                                                                    UniqueName="StudentLimit"
+											    DataMemberBinding="{Binding StudentLimit}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewColumn Width="50" >
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <AisinoCommonControls:EditControl Name="UpdateClassType" MouseLeftButtonUp="UpdateClassType_MouseLeftButtonUp"
+                                                                      Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"/>
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                    <telerik:GridViewColumn Width="50">
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <AisinoCommonControls:DeleteControl Name="DeleteClassType" MouseLeftButtonUp="DeleteClassType_MouseLeftButtonUp"
+                                                             Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"/>
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+            <DockPanel>
+                <telerik:RadGridView x:Name="gvClasses" VerticalAlignment="Stretch"  DockPanel.Dock="Left"
+							                         Style="{StaticResource PageGridViewStyle}" 
+                                                     NewRowPosition="Top" GroupRenderMode="Flat"
+                                                     NewRowStyle="{StaticResource GridViewNewRowStyle}"
+                                                     EditTriggers="F2" ActionOnLostFocus="None" 
+                                                     CanUserInsertRows="True" AddingNewDataItem="gvClasses_AddingNewDataItem"
+                                                     IsReadOnly="False"
+                                                     CanUserDeleteRows="True"
+                                                        >
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn Header="ClassName"
+                                                                    UniqueName="ClassName"
+											    DataMemberBinding="{Binding Name}" 
+											    Width="150" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="LastCount"
+                                                                    UniqueName="LastCount"
+											    DataMemberBinding="{Binding LastCount}" 
+											    Width="90" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="StartDate"
+                                                                    UniqueName="StartDate"
+											    DataMemberBinding="{Binding StartDate}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="EndDate"
+                                                                    UniqueName="EndDate"
+											    DataMemberBinding="{Binding EndDate}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewColumn Width="50" >
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <AisinoCommonControls:EditControl Name="UpdateClass" MouseLeftButtonUp="UpdateClass_MouseLeftButtonUp"
+                                                                      Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"/>
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                        <telerik:GridViewColumn Width="50">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <AisinoCommonControls:DeleteControl Name="DeleteClass" MouseLeftButtonUp="DeleteClass_MouseLeftButtonUp"
+                                                             Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"/>
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+                <telerik:RadGridView x:Name="gvSchemas" VerticalAlignment="Stretch"  DockPanel.Dock="Right"
+							                         Style="{StaticResource PageGridViewStyle}" 
+                                                     NewRowPosition="Top" GroupRenderMode="Flat"
+                                                     NewRowStyle="{StaticResource GridViewNewRowStyle}"
+                                                     EditTriggers="F2" ActionOnLostFocus="None" 
+                                                     CanUserInsertRows="True" AddingNewDataItem="gvSchemas_AddingNewDataItem"
+                                                     IsReadOnly="False"
+                                                     CanUserDeleteRows="True"
+                                                        >
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn Header="LevelName"
+                                                                    UniqueName="LevelName"
+											    DataMemberBinding="{Binding LevelName}" 
+											    Width="70" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="LessonName"
+                                                                    UniqueName="LessonName"
+											    DataMemberBinding="{Binding LessonName}" 
+											    Width="90" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="Seq"
+                                                                    UniqueName="Seq"
+											    DataMemberBinding="{Binding Seq}" 
+											    Width="50" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewColumn Width="50" >
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <AisinoCommonControls:EditControl Name="UpdateSchemas" MouseLeftButtonUp="UpdateSchemas_MouseLeftButtonUp"
+                                                                      Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"/>
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                        <telerik:GridViewColumn Width="50">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <AisinoCommonControls:DeleteControl Name="DeleteSchemas" MouseLeftButtonUp="DeleteSchemas_MouseLeftButtonUp"
+                                                             Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"/>
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </DockPanel>
+        </DockPanel>
+    </Viewbox>
+</src:BusinessBasePage>

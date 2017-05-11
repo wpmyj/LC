@@ -1,0 +1,144 @@
+﻿<src:BusinessBasePage x:Class="Aisino.MES.Client.SysManager.Pages.RoleManagerPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:src="clr-namespace:Aisino.MES.Client.WPFCommon.BasePages;assembly=Aisino.MES.Client.WPFCommon" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:telerikGrid="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView" Title="角色管理" Loaded="Window_Loaded" SizeChanged="BusinessBasePage_SizeChanged" d:DesignHeight="600" d:DesignWidth="900" 
+                      Style="{DynamicResource PageStyle}" 
+                      mc:Ignorable="d">
+    <src:BusinessBasePage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.Resources;component/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/TerlerikStyle/RadGridViewCommon.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Ellipse x:Key="AppThemeMenuIcon" Width="16" Height="16"
+                     Fill="{Binding ColorBrush, Mode=OneWay}" Stroke="{Binding BorderColorBrush, Mode=OneWay}" StrokeThickness="1"
+                     x:Shared="False" />
+            <Ellipse x:Key="AccentMenuIcon" Width="16" Height="16"
+                     Fill="{Binding ColorBrush, Mode=OneWay}" x:Shared="False" />
+
+            <Style x:Key="AppThemeMenuItemStyle" BasedOn="{StaticResource MetroMenuItem}" TargetType="{x:Type MenuItem}">
+                <Setter Property="Command" Value="{Binding ChangeAccentCommand}" />
+                <Setter Property="Icon" Value="{StaticResource AppThemeMenuIcon}" />
+                <Setter Property="Header" Value="{Binding Name, Mode=OneWay}" />
+            </Style>
+
+            <Style x:Key="AccentColorMenuItemStyle" BasedOn="{StaticResource MetroMenuItem}" TargetType="{x:Type MenuItem}">
+                <Setter Property="Command" Value="{Binding ChangeAccentCommand}" />
+                <Setter Property="Icon" Value="{StaticResource AccentMenuIcon}" />
+                <Setter Property="Header" Value="{Binding Name, Mode=OneWay}" />
+            </Style>
+
+            <Style x:Key="GridViewHeaderCellStyle" TargetType="{x:Type telerik:GridViewHeaderCell}">
+                <Setter Property="Background" Value="Green" />
+            </Style>
+        </ResourceDictionary>
+    </src:BusinessBasePage.Resources>
+    <Viewbox Name="viewBox" Stretch="Uniform">
+        <DockPanel Name="dockPanel" Width="900" Height="600"
+                   LastChildFill="true">
+
+            <Menu Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="#FFD6D4D4" 
+                  VerticalAlignment="Stretch" BorderThickness="1" DockPanel.Dock="Top" Style="{StaticResource PageMenuStyle}">
+                <MenuItem Name="btnAddRole" Height="40" Header="添加角色" Click="btnAddRole_Click"
+                          ItemContainerStyle="{StaticResource AppThemeMenuItemStyle}" ItemsSource="{Binding AppThemes, Mode=OneWay}" />
+                <MenuItem Name="btnUpdateRole" Header="修改角色" Click="btnUpdateRole_Click" ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}"
+                          ItemsSource="{Binding AccentColors, Mode=OneWay}" />
+                <MenuItem Name="btnDeleteRole" Header="删除角色" Click="btnDeleteRole_Click" ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}"
+                          ItemsSource="{Binding AccentColors, Mode=OneWay}" />
+                <MenuItem Header="|" />
+                <MenuItem Name="btnAllUser" Header="所含用户" Click="btnAllUser_Click" ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}"
+                          ItemsSource="{Binding AccentColors, Mode=OneWay}" />
+                <MenuItem Name="btnAllRight" Header="所含权限" Click="btnAllRight_Click" ItemContainerStyle="{StaticResource AccentColorMenuItemStyle}"
+                          ItemsSource="{Binding AccentColors, Mode=OneWay}" />
+            </Menu>
+           
+                    <ListView Name="listRole" Width="200" BorderBrush="#FFD6D4D4" BorderThickness="1"
+                              Margin="0, 0, 0, 0"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              SelectionChanged="listRole_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Code}"
+                                        Header="角色编号" Width="96"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                        Header="角色名称" Width="96"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+           
+                    <ListView Name="listUser" Width="300" BorderBrush="#FFD6D4D4" BorderThickness="1"
+                              Margin="0, 0, 0, 0" 
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                        Header="用户列表" Width="296" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+              
+                    <ListView Name="listRight" BorderBrush="#FFD6D4D4" BorderThickness="1"
+                              Margin="0, 0, 0, 0"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                        Header="权限列表" Width="500"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+            <!--<Border BorderBrush="#FFD6D4D4" BorderThickness="1">
+            <StackPanel Width="200" Name="listStack">
+                <StackPanel Orientation="Horizontal">
+                    <Label Width="100" HorizontalContentAlignment="Left">
+                        角色编号
+                    </Label>
+                    <Label Width="100" HorizontalContentAlignment="Left">
+                        角色名称
+                    </Label>
+                </StackPanel>
+                <ListBox Name="listRole" Width="200" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                         ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding}" SelectionChanged="listRole_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Name="roleItem">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Width="100" HorizontalContentAlignment="Left" Content="{Binding Path=Code}" />
+                                    <Label Width="100" HorizontalContentAlignment="Left" Content="{Binding Path=Name}" />
+                                </StackPanel>
+                            </Label>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            </Border>-->
+            <!--<Border BorderBrush="#FFD6D4D4" BorderThickness="1">
+            <StackPanel Width="300" Name="listUser">
+                <Label HorizontalContentAlignment="Center">用户列表</Label>
+                <ListBox ItemsSource="{Binding}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label HorizontalContentAlignment="Center"  Content="{Binding Path=Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            </Border>-->
+            <!--<Border BorderBrush="#FFD6D4D4" BorderThickness="1">
+            <StackPanel Name="listRight">
+                <Label HorizontalContentAlignment="Center">权限列表</Label>
+                <ListBox ItemsSource="{Binding}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label HorizontalContentAlignment="Center"  Content="{Binding Path=Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            </Border>-->
+        </DockPanel>
+    </Viewbox>
+</src:BusinessBasePage>

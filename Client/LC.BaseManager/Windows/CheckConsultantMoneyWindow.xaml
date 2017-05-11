@@ -1,0 +1,53 @@
+﻿<src:BaseWindow x:Class="LC.BaseManager.Windows.CheckConsultantMoneyWindow"
+                xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{DynamicResource WindowStyle}" 
+        xmlns:src="clr-namespace:Aisino.MES.Client.WPFCommon.Windows;assembly=Aisino.MES.Client.WPFCommon"
+                xmlns:AisinoCommonControls="clr-namespace:Aisino.MES.Client.WPFCommon.Controls;assembly=Aisino.MES.Client.WPFCommon" 
+                xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+      xmlns:telerikGrid="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView"
+        Title="CheckConsultantMoneyWindow" Height="300" Width="300" Loaded="BaseWindow_Loaded"  WindowStartupLocation="CenterScreen"
+        BorderThickness="1" BorderBrush="#FFD4D2D2">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/ControlCommonSetting.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Aisino.MES.Client.WPFCommon;component/TerlerikStyle/RadGridViewCommon.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Viewbox Name="viewBox">
+        <DockPanel LastChildFill="true" Height="300" Width="300" Name="dockPanel">
+            <telerik:RadGridView x:Name="gvMoney" VerticalAlignment="Stretch" 
+							                         Style="{StaticResource PageGridViewStyle}"  GroupRenderMode="Flat"
+                                                     EditTriggers="F2" ActionOnLostFocus="None" 
+                                                     IsReadOnly="False"
+                                                        >
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="Month" UniqueName="Month"
+											    DataMemberBinding="{Binding Month}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn Header="Money" UniqueName="Money"
+											    DataMemberBinding="{Binding Money}" 
+											    Width="120" 
+                                                IsGroupable="False"
+                                                IsFilterable="False">
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewColumn Width="50" >
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <AisinoCommonControls:Confirm Name="CheckControl" MouseLeftButtonUp="CheckControl_MouseLeftButtonUp"
+                                                             Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=telerik:GridViewCell},Path=Background}"/>
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewColumn>
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </DockPanel>
+    </Viewbox>
+</src:BaseWindow>
